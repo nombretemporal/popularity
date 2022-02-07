@@ -4,6 +4,11 @@ Using web scraping and plotting to visualise popularity of media and characters 
 ## Motivation
 Inspired by projects such as [this one](https://github.com/alexei-kouprianov/youtube_tracker), the present project exploits the idea that sometimes data is publicly available, but only for a short time; therefore, it makes sense to scrape it dynamically and store into a file which can later be used for analysis. In principle the analysis and visualisation of the data can be automatised and made dynamic, to the effect that new data points are incorporated in real time.
 
+## Folder [`youtube`](youtube)
+Here the scripts scrape and plot the changes in the audience of countinuing YouTube livestreams in real time.
+
+The main script [`streaming.r`](youtube/scripts/streaming.r), once initialised, will run continuously. It activates the ancillary script [`streaming.pl`](youtube/scripts/streaming.pl), which uses the list of URLs (with stream names) [`streaming.txt`](youtube/data/streaming.txt) to scrape the current number of viewers for each of the streams listed there. Those are added to the data file [`streamingcounter.txt`](youtube/data/streamingcounter.txt). The main script then reads this file to plot the dynamics of views for the last 24 hours, then waits for five minutes and initialises the Perl script again.
+
 ## Folder [`akinator`](akinator)
 Here the multilingual web game [Akinator](https://akinator.com) is used to measure the popularity of real and fictional characters in different language segments. English, French, German, Italian, Russian and Spanish are used.
 
